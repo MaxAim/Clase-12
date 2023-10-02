@@ -16,8 +16,8 @@ public class MapperAutor {
     public static Autor toEntity(AutorDto autorDto){
         Autor autor = new Autor();
 
-        autor.setName(autor.getName());
-        autor.setSurname(autor.getSurname());
+        autor.setName(autorDto.getName());
+        autor.setSurname(autorDto.getSurname());
         autor.setLibros(autorDto.getLibros());
 
         return autor;
