@@ -23,8 +23,25 @@ public class AutorController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveAutors(@RequestBody AutorDto autorDto){
+    public ResponseEntity<String> saveAutor(@RequestBody AutorDto autorDto){
         String mensaje = autorService.saveAutor(autorDto);
         return new ResponseEntity<>(mensaje, HttpStatus.CREATED);
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateAutor(@RequestBody AutorDto autorDto, @PathVariable Long id){
+        String mensaje = autorService.updateAutor(id, autorDto);
+        return new ResponseEntity<>(mensaje, HttpStatus.OK);
+    }
+
+    @GetMapping("find")
+    public ResponseEntity<AutorDto> findAutor(@RequestBody String name){
+        AutorDto mensaje = autorService.findAutor(name);
+        return new ResponseEntity<>(mensaje, HttpStatus.FOUND);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteAutor(@PathVariable Long id){
+        String mensaje = autorService.deleteAutor(id);
+        return new ResponseEntity<>(mensaje, HttpStatus.OK);
     }
 }

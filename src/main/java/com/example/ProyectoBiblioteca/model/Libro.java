@@ -1,5 +1,6 @@
 package com.example.ProyectoBiblioteca.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -26,5 +27,6 @@ public class Libro {
     @JoinTable(name = "libro_autor",
             joinColumns = @JoinColumn(name = "libro_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id"))
+    @JsonIgnore
     private Set<Autor> autores = new HashSet<>();
 }
